@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+// This is where our chat service lives. We’re defining how messages get passed around.
+package chat;
+
+// This tells Go where to put the generated code. You can think of it as the Go folder where
+// we’ll find the generated code after we compile this .proto file.
+option go_package = "proto/chatpb";
+
+// Here’s our service that’s going to handle chat streams
+service ChatService {
+  // This is where the magic happens – ChatStream. It allows two-way communication.
+  // Clients send messages, and the server sends them back. It’s like a chat room.
+  rpc ChatStream (stream ChatMessage) returns (stream ChatMessage);
+}
+
+// Define a message for chatting. Every time someone sends a message, it's wrapped in this format.
+message ChatMessage {
+  // The sender’s name – who’s saying what? This will tell us who’s talking.
+  string sender = 1;
+
+  // The message itself. What is being said? 
+  string message = 2;
+
+  // A timestamp of when the message was sent. This helps us keep things in order.
+  string timestamp = 3;
+}
