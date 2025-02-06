@@ -12,7 +12,7 @@ First, you'll need to clone this repo to your local machine:
 
 ```bash
 git clone https://github.com/viralkansarav/chat-now.git
-cd chat-now
+cd chat-now/backend
 ```
 ### 2. **Start the gRPC Server**
 
